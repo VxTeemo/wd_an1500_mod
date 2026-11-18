@@ -46,3 +46,30 @@
 * `crc_fix.py` - 用于修复 7MB 固件并计算校验和，您需要将计算出的校验和替换到 7MB 固件末尾
 * `oprom_full.bin` - 这是一个功能完整的选项 ROM，用于替换 7MB 固件中 0x60_0000 位置的内容
 * `hbainfo.bin` - 这是用于解锁 RAID0/1/JBOD 功能的 HBA 信息结构，用于替换 7MB 固件中 0x2_0000 位置的内容
+
+
+## 4. an1500ctl (recommended runtime control tool)
+
+`an1500ctl.py` talks to the controller with the same vendor NVMe admin commands used by `mnv_cli`,
+but decodes replies directly and shows JBOD correctly.
+
+Examples:
+
+```
+sudo ./an1500ctl.py list
+sudo ./an1500ctl.py info hba
+sudo ./an1500ctl.py create -r jbod -d 0 -y
+sudo ./an1500ctl.py create -r raid0 -d 0,1 -b 256 -y
+sudo ./an1500ctl.py delete -i 0 -y
+sudo ./an1500ctl.py delete -i 0 --force -y
+sudo ./an1500ctl.py tui
+```
+
+Safety notes:
+
+* create/delete require confirmation unless `-y` is provided.
+* delete checks mounts/swap/holders/openers and refuses by default when a volume is in use.
+* `--force` bypasses in-use blocking checks and can corrupt active workloads.
+* `--dry-run` prints the exact request payload(s) and does not send anything to the card.
+
+See `docs/an1500ctl.md` for protocol details and validation notes.

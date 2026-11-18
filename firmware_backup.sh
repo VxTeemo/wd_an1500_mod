@@ -9,4 +9,5 @@ if [ "$1" == "" ]; then
 fi
 
 chmod +x mvf/mvf_*
-cd mvf && ./mvf_64 -rfb ../an1500_backup.bin -addr 0x00000000 -sz $SIZE_16MB && cd ..
+SAVE_TO_FILE=$(realpath -m "$SAVE_TO_FILE")
+cd mvf && ./mvf_64 -rfb "$SAVE_TO_FILE" -addr 0x00000000 -sz $SIZE_16MB && cd ..

@@ -58,19 +58,26 @@ sudo ./an1500ctl.py tui                  # 全屏界面
 | `create -r raid1 -d 0,1 -y` | 显示 RAID1、953.8 GiB；`mnv_cli` 也显示 RAID1 |
 | `create -r jbod -d 0 -y` | 显示 JBOD；gdb 读到原始模式值 0x0F |
 | `delete --dry-run`、各种拒绝情况 | 卷数已满、VD 不存在、非终端且没有 `-y` |
+| 卷占用时删除保护（CLI） | 用 `cat /dev/nvme0n1 >/dev/null` 造 opener；`delete --dry-run` 默认拒绝并提示 PID/进程名；`--force --dry-run` 可继续输出删除请求 |
+| CLI 交互式确认（stdin 是终端） | `create -r jbod -d 0` 与 `delete -i 0` 都手动输入 `yes`，均成功执行 |
 | TUI 启动、主界面、创建对话框打开和取消、无卷时按 `d` 的提示、`q` 退出 | [tools/tui_drive.py](tools/tui_drive.py) 在伪终端里驱动，无异常，退出码 0 |
 | TUI 创建 JBOD（PD 1） | 同上，按键序列 `c Enter Enter Enter Y`，界面显示 "Created JBOD volume 'VD_1'"，之后 `list` 确认 |
+| TUI 删除卷（普通路径） | 按键序列 `d Y q` 删除 VD0，界面显示 `Deleted VD 0 'VD_0'.`，随后 `list` 确认仅剩 VD1 |
+| TUI 删除卷（强制路径） | 造 opener 后按键序列 `d F Y q`，先出现 in-use 风险确认，再进入二次删除确认，最终成功删除 |
 
 ### 没有实测
 
-- `create --dry-run` 的输出（试的时候卷数已满，先被拒绝了）。
-- TUI 删除卷（确认对话框和实际删除）。
-- TUI 创建 RAID0/RAID1（自动选两块盘、选条带大小）；多选对话框（这张卡只有两块盘，走不到）。
-- 卷被挂载或占用时拒绝删除、`--force`、分区和非空数据的警告（测试时卷都是空的）。
-- 交互式输入 `yes` 的确认路径。
+- TUI 创建 RAID0/RAID1（自动按键脚本在该分支时序不稳定，暂未拿到稳定通过用例）；多选对话框（这张卡只有两块盘，走不到）。
+- 分区和非空数据的警告（测试时卷都是空的）。
 - TUI 在真实终端里的显示和颜色（只用 `TERM=vt100` 跑过）；终端很窄或很矮时的表现。
 - 卷状态不是 Functional、有后台任务、物理盘故障等情况的显示（没遇到过，解码来自反汇编）。
 - 其他固件版本或其他 88NR2241 卡。
+
+### 本轮新增改进（已实测）
+
+- `vd_usage()` 现在会额外检查 `/proc/*/fd`，识别打开 `/dev/nvmeXnY` 或其分区节点的进程。
+- TUI 删除在检测到卷占用时支持 `F` 强制删除（语义与 CLI `--force` 对齐），并给出二次风险提示。
+- CLI `create --dry-run` 在卷已满时仍可打印完整请求，并附带当前状态下真实创建会失败的原因提示。
 
 ## 4. 继续测试的方法
 
