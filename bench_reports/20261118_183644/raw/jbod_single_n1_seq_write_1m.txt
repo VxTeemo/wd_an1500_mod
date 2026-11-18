@@ -1,0 +1,30 @@
+jbod_single_n1_seq_write_1m: (g=0): rw=write, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=32
+fio-3.16
+Starting 1 process
+
+jbod_single_n1_seq_write_1m: (groupid=0, jobs=1): err= 0: pid=49794: Wed Nov 18 18:40:26 2026
+  write: IOPS=3206, BW=3206MiB/s (3362MB/s)(62.7GiB/20013msec); 0 zone resets
+    slat (usec): min=41, max=347, avg=123.05, stdev=32.33
+    clat (usec): min=3368, max=23410, avg=9854.11, stdev=1623.42
+     lat (usec): min=3475, max=23529, avg=9977.55, stdev=1619.86
+    clat percentiles (usec):
+     |  1.00th=[ 7373],  5.00th=[ 7832], 10.00th=[ 8094], 20.00th=[ 8455],
+     | 30.00th=[ 9110], 40.00th=[ 9372], 50.00th=[ 9765], 60.00th=[ 9896],
+     | 70.00th=[10159], 80.00th=[10552], 90.00th=[11731], 95.00th=[13829],
+     | 99.00th=[15008], 99.50th=[15270], 99.90th=[16188], 99.95th=[16450],
+     | 99.99th=[20055]
+   bw (  MiB/s): min= 3158, max= 3260, per=100.00%, avg=3206.65, stdev=24.51, samples=40
+   iops        : min= 3158, max= 3260, avg=3206.70, stdev=24.51, samples=40
+  lat (msec)   : 4=0.03%, 10=62.06%, 20=37.90%, 50=0.01%
+  cpu          : usr=26.88%, sys=16.70%, ctx=45571, majf=0, minf=10
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=100.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.1%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,64166,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
+
+Run status group 0 (all jobs):
+  WRITE: bw=3206MiB/s (3362MB/s), 3206MiB/s-3206MiB/s (3362MB/s-3362MB/s), io=62.7GiB (67.3GB), run=20013-20013msec
+
+Disk stats (read/write):
+  nvme0n1: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%

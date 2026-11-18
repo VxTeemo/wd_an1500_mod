@@ -1,0 +1,30 @@
+raid0_seq_write_1m: (g=0): rw=write, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=32
+fio-3.16
+Starting 1 process
+
+raid0_seq_write_1m: (groupid=0, jobs=1): err= 0: pid=48365: Wed Nov 18 18:37:30 2026
+  write: IOPS=5046, BW=5047MiB/s (5292MB/s)(98.6GiB/20006msec); 0 zone resets
+    slat (usec): min=35, max=397, avg=98.71, stdev=15.30
+    clat (usec): min=3051, max=12867, avg=6240.75, stdev=1259.92
+     lat (usec): min=3098, max=12961, avg=6339.58, stdev=1258.79
+    clat percentiles (usec):
+     |  1.00th=[ 4359],  5.00th=[ 4621], 10.00th=[ 4752], 20.00th=[ 5014],
+     | 30.00th=[ 5407], 40.00th=[ 5800], 50.00th=[ 6128], 60.00th=[ 6456],
+     | 70.00th=[ 6783], 80.00th=[ 7177], 90.00th=[ 7767], 95.00th=[ 8455],
+     | 99.00th=[10421], 99.50th=[10945], 99.90th=[11731], 99.95th=[12125],
+     | 99.99th=[12649]
+   bw (  MiB/s): min= 4978, max= 5104, per=99.99%, avg=5046.35, stdev=28.77, samples=40
+   iops        : min= 4978, max= 5104, avg=5046.33, stdev=28.79, samples=40
+  lat (msec)   : 4=0.12%, 10=98.31%, 20=1.56%
+  cpu          : usr=40.09%, sys=12.18%, ctx=69371, majf=0, minf=10
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=100.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.1%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,100963,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
+
+Run status group 0 (all jobs):
+  WRITE: bw=5047MiB/s (5292MB/s), 5047MiB/s-5047MiB/s (5292MB/s-5292MB/s), io=98.6GiB (106GB), run=20006-20006msec
+
+Disk stats (read/write):
+  nvme0n1: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%

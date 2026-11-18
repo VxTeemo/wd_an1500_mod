@@ -1,0 +1,8 @@
+/dev/nvme0  WD_BLACK AN1500  fw 1.0.27.1043  modes: RAID0 RAID1 JBOD
+
+VD  Name  Mode   Status      Size       PDs  Stripe  Block device  Background
+0   VD_0  RAID1  Functional  953.8 GiB  0,1  -       /dev/nvme0n1  -
+
+PD  Model                   Serial        FW        Size       Status  Used by  SMART
+0   KXG7AZNV1T02 LA KIOXIA  62MZZ014EG96  5118AJLA  953.9 GiB  Idle    VD 0     ok
+1   KXG7AZNV1T02 LA KIOXIA  62MZZ016EG96  5118AJLA  953.9 GiB  Idle    VD 0     ok

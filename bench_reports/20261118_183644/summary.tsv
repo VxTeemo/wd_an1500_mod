@@ -1,0 +1,17 @@
+mode	test	bw	iops	latency_hint
+raid0	seq_read_1m	  read: IOPS=6718, BW=6719MiB/s (7045MB/s)(131GiB/20004msec)	6718	clat (usec): min=764, max=9667, avg=4720.63, stdev=1080.10
+raid0	seq_write_1m	  write: IOPS=5046, BW=5047MiB/s (5292MB/s)(98.6GiB/20006msec); 0 zone resets	5046	clat (usec): min=3051, max=12867, avg=6240.75, stdev=1259.92
+raid0	rand_read_4k	  read: IOPS=1263k, BW=4934MiB/s (5174MB/s)(96.4GiB/20001msec)	1263k	clat (usec): min=23, max=10385, avg=99.34, stdev=36.97
+raid0	rand_write_4k	  write: IOPS=735k, BW=2872MiB/s (3012MB/s)(56.1GiB/20001msec); 0 zone resets	735k	clat (usec): min=10, max=10558, avg=171.88, stdev=313.98
+raid1	seq_read_1m	  read: IOPS=6632, BW=6633MiB/s (6955MB/s)(130GiB/20006msec)	6632	clat (usec): min=788, max=11645, avg=4788.19, stdev=1070.22
+raid1	seq_write_1m	  write: IOPS=2508, BW=2508MiB/s (2630MB/s)(49.0GiB/20015msec); 0 zone resets	2508	clat (usec): min=3739, max=28087, avg=12612.85, stdev=1999.05
+raid1	rand_read_4k	  read: IOPS=1281k, BW=5002MiB/s (5245MB/s)(97.7GiB/20002msec)	1281k	clat (usec): min=16, max=13459, avg=97.96, stdev=42.26
+raid1	rand_write_4k	  write: IOPS=337k, BW=1318MiB/s (1382MB/s)(25.7GiB/20001msec); 0 zone resets	337k	clat (usec): min=61, max=13593, avg=376.31, stdev=443.79
+jbod_single_n1	seq_read_1m	  read: IOPS=3241, BW=3241MiB/s (3399MB/s)(63.3GiB/20009msec)	3241	clat (usec): min=3464, max=24945, avg=9805.05, stdev=1209.75
+jbod_single_n1	seq_write_1m	  write: IOPS=3206, BW=3206MiB/s (3362MB/s)(62.7GiB/20013msec); 0 zone resets	3206	clat (usec): min=3368, max=23410, avg=9854.11, stdev=1623.42
+jbod_single_n1	rand_read_4k	  read: IOPS=758k, BW=2961MiB/s (3105MB/s)(57.8GiB/20001msec)	758k	clat (usec): min=25, max=1248, avg=166.91, stdev=43.96
+jbod_single_n1	rand_write_4k	  write: IOPS=341k, BW=1331MiB/s (1396MB/s)(25.0GiB/20001msec); 0 zone resets	341k	clat (usec): min=61, max=12779, avg=373.10, stdev=362.82
+jbod_dual_10s	seq_read_1m	  read: IOPS=6157, BW=6157MiB/s (6456MB/s)(60.2GiB/10009msec)	6157	clat (usec): min=2018, max=19224, avg=10332.37, stdev=1086.44
+jbod_dual_10s	seq_write_1m	  write: IOPS=5006, BW=5006MiB/s (5250MB/s)(48.9GiB/10011msec); 0 zone resets	5006	clat (usec): min=2194, max=24189, avg=12662.99, stdev=1862.52
+jbod_dual_10s	rand_read_4k	  read: IOPS=1370k, BW=5352MiB/s (5612MB/s)(52.3GiB/10002msec)	1370k	clat (usec): min=19, max=12842, avg=184.99, stdev=243.17
+jbod_dual_10s	rand_write_4k	  write: IOPS=759k, BW=2964MiB/s (3108MB/s)(28.9GiB/10001msec); 0 zone resets	759k	clat (usec): min=20, max=22044, avg=334.85, stdev=489.80
